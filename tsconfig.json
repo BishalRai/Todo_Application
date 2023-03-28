@@ -4,5 +4,6 @@
         "module": "CommonJS",
         "rootDir": "ts",
         "outDir": "js",
-    }
+    },
+    "exclude":["server/*.ts"]
 }
