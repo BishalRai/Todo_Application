@@ -77,9 +77,41 @@ input.addEventListener('keypress' , event => {
 })
 
  */
+/*
+const renderTask = (task:Task) => {
+    const list_item = document.createElement('li')
+    list_item.setAttribute('class','list-group-item')
+    list_item.innerHTML = task.text
+    renderSpan(list_item, task.text)
+    renderLink(list_item, task.id)
+
+    list.append(list_item)
+}
+ */
 const renderTask = (task) => {
     const list_item = document.createElement('li');
     list_item.setAttribute('class', 'list-group-item');
-    list_item.innerHTML = task.text;
+    list_item.setAttribute('data-key', task.id.toString());
+    renderSpan(list_item, task.text);
+    renderLink(list_item, task.id);
     list.append(list_item);
+};
+const renderSpan = (list_item, text) => {
+    const span = list_item.appendChild(document.createElement('span'));
+    span.innerHTML = text;
+};
+const renderLink = (list_item, id) => {
+    const link = list_item.appendChild(document.createElement('a'));
+    link.innerHTML = '<i class="bi bi-trash"></i>';
+    link.setAttribute('style', 'float: right');
+    link.addEventListener('click', event => {
+        todos.removeTask(id).then((id) => {
+            const removeElement = document.querySelector(`[data-key='${id}']`);
+            if (removeElement) {
+                list.removeChild(removeElement);
+            }
+        }).catch(error => {
+            alert(error);
+        });
+    });
 };

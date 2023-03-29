@@ -40,7 +40,7 @@ addTask = async(text:string) => {
 
     })
 }
-/*  
+ 
 removeTask = (id:number) => {
     return new Promise(async (resolve,reject) => {
         fetch(this.#backend_url + '/delete/' + id, {
@@ -55,7 +55,7 @@ removeTask = (id:number) => {
         })
     })
 }
-*/
+
 
 #readJson(tasksAsJson: any): void {
     tasksAsJson.forEach(node=> {
@@ -70,12 +70,11 @@ removeTask = (id:number) => {
     this.tasks.push(task)
     return task
 }
-    /*   
-    #removeFromArray (id: number): void {
-        const arrayWithoutRemoved = this.tasks.filter(task => task.id !== id)
-        this.tasks = arrayWithoutRemoved
-    } 
-    */
+
+#removeFromArray (id: number): void {
+    const arrayWithoutRemoved = this.tasks.filter(task => task.id !== id)
+    this.tasks = arrayWithoutRemoved
+} 
   
 } 
 export { Todos }
